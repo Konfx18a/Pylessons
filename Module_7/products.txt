@@ -1,0 +1,7 @@
+
+Potato , 50.5 , Vegetables
+Spaghetti , 3.4 , Groceries
+Potato , 5.5 , Vegetables
+Яблоко , 100 , Фрукты
+Мороженное , 250 , Сладости
+Торт , 1000 , Сладости
