@@ -1,4 +1,4 @@
-# Перед сдачей спросить как установить интерпретер ранее 3.10
+# 
 import random
 import time
 from threading import Lock
