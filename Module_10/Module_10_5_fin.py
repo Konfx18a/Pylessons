@@ -9,7 +9,7 @@ def read_info(name):
 
 # print(read_info('file1.txt')[:10])
 if __name__ == '__main__':
-    # begin = time.time()
+    begin = time.time()
     all_files = ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt']
     for file_name in all_files:
         read_info(file_name)
