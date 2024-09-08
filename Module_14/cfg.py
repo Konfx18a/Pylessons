@@ -1,0 +1,13 @@
+WINDOW_X = 800
+WINDOW_Y = 600
+SCREEN_TITLE = 'ЛАБИРИНТ Q-learnin'
+BG_COLOR = (0, 0, 0)
+GRID_SIZE = (5, 5)
+ACTIONS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+ALFA = 0.1
+GAMMA = 0.9
+EPSILON = 0.1
+STOWNS = [(2, 2), (3, 3), (2,0)]
+LABY_INPUT = (0, 0)
+LABY_OUTPUT = (4, 4)
+EPISODZ = 100
