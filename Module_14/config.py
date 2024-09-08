@@ -1,4 +1,4 @@
-API = '7468777532:AAH2TImtlGDIfbrfC5EYJvX7jvOMDem5wG4'
+API = '*********************************'
 
 price_baby_velo = 15_000
 
