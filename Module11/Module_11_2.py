@@ -32,6 +32,12 @@ class IntroTest:
 def void_func():
     pass
 
+def get_attribute(obj, attr_name):
+    attribute_ = getattr(obj, attr_name, "Такого аттрибута не существует!")
+    return {attr_name: attribute_}
+
+
+
 def introspection_info(obj):
     intro_dict = {}
     attribs = {}
@@ -60,3 +66,4 @@ pprint(introspection_info(True))
 pprint(introspection_info(123))
 pprint(introspection_info('Str'))
 pprint(dir(it))
+pprint(get_attribute(it,"compiler"))
