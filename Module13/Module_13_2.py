@@ -5,12 +5,12 @@ api = '********************************************'
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
-@dp.message_handler(commands='start')
-def start(message):
+@dp.message_handler(commands=['/start'])
+async def start(message):
     print('Привет! Я бот помогающий твоему здоровью.')
 
 @dp.message_handler()
-def all_massages(message):
+async def all_massages(message):
     print('Привет! Я бот помогающий твоему здоровью.')
 
 if __name__ == '__main__':
