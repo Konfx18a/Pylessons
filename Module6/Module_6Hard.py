@@ -1,16 +1,19 @@
 from math import pi
 
+
 class Figure:
-    side_count = 0
-    def __init__(self, color, *sides, filled = False):
+    sides_count = 0
+
+    def __init__(self, color, *sides, filled=False):
         if self.__is_valid_sides(sides):
             self.__sides = list(sides)
         else:
-            self.__sides = [1] * self.side_count
+            self.__sides = [1] * self.sides_count
+        # Сделал цвет списком, как будет угодно ))) 
         if self.__is_valid_color(*color):
-            self.__color = color
+            self.__color = list(color)
         else:
-            self.__color = 0, 0, 0
+            self.__color = list([0,0,0])
         self.filled = filled
 
     def __len__(self):
@@ -20,6 +23,11 @@ class Figure:
         return self.__color
 
     def __is_valid_color(self, r, g, b):
+        # Добавил проверку на тип переменных цвета
+        for i in (r, g, b):
+            if not isinstance(i, int):
+                return False
+                # raise TypeError('Цвет должен быть числом типа integer')
         if 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
             return True
         else:
@@ -27,10 +35,10 @@ class Figure:
 
     def set_color(self, r, g, b):
         if self.__is_valid_color(r, g, b):
-            self.__color = (r, g, b)
+            self.__color = [r, g, b]
 
     def __is_valid_sides(self, sides):
-        if len(sides) != self.side_count:
+        if len(sides) != self.sides_count:
             return False
         for i in sides:
             if not isinstance(i, int) and i < 0:
@@ -47,10 +55,11 @@ class Figure:
 
 #----------------------------------------------------
 class Circle(Figure):
-    side_count = 1
+    sides_count = 1
     def __init__(self, color, *sides):
         super().__init__(color, *sides)
-        self.__radius = sides[0] / (2 * pi)
+        #Исправил формулу расчета радиуса, считает верно
+        self.__radius = self.get_sides()[0] / (2 * pi)
 
 
     def get_square(self):
@@ -58,7 +67,7 @@ class Circle(Figure):
 
 #-------------------------------------------------
 class Triangle(Figure):
-    side_count = 3
+    sides_count = 3
     def __init__(self, color, *sides):
         super().__init__(color, *sides)
         p = sum(sides) / 2
@@ -71,12 +80,12 @@ class Triangle(Figure):
         return self.__height * self.get_sides()[0] / 2
 #----------------------------------------------------------
 class Cube(Figure):
-    side_count = 12
+    sides_count = 12
     def __init__(self, color, *sides):
         super().__init__(color, *sides)
         # Надеюсь это то, что от меня требуется. А то коробит приватные члены класса из потомков менять))))
         if len(sides) == 1 and isinstance(sides[0], int):
-            self._Figure__sides = list(sides)*self.side_count
+            self._Figure__sides = list(sides)*self.sides_count
 
 
 
@@ -88,6 +97,7 @@ class Cube(Figure):
 # 11             self.__color = list(color)
 # 13             self.__color = [0] *3
 # 30             self.__color = list(r, g, b)
+
 cube1 = Cube((222, 35, 130), 6)
 circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
 # Проверка на изменение цветов:
