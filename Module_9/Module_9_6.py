@@ -25,12 +25,12 @@ def all_variants_with_for(text):
 obj = all_variants_with_while('abcdefghijk')
 obj1 = all_variants_with_for('abcdefghijk')
 
-print('# Вариант с while)
+print('# Вариант с while')
 for i in obj:
     print(i)
 
-print('# Вариант с for")
+print('# Вариант с for')
 for i in obj1:
     print(i)
 
-
+    print(i)
