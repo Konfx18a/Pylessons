@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from routers import category
 from routers import task
 from routers import user
 
