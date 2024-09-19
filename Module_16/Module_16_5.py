@@ -4,64 +4,70 @@ from pydantic import BaseModel
 from typing import List
 from fastapi.templating import Jinja2Templates
 app = FastAPI()
-templates = Jinja2Templates(directory="templs")
+templates = Jinja2Templates(directory="templates")
 
-messages_db = []
+users = []
 
+def find_to_id(uid):
+    for u in users:
+        if u.id == uid:
+            return u
 
-class Message(BaseModel):
+class User(BaseModel):
     id: int = None
-    text: str
+    age: int
+    username: str
 
-for i in range(1,10):
-    messages_db.append(Message(id=i, text=f" Пункт"))
 
 
 @app.get("/")
-def get_all_messages(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse("messages.html", {"request": request, "messages": messages_db})
+def get_all_users(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse("users.html", {"request": request, "users": users})
 
 
-@app.get(path="/message/{message_id}")
-def get_message(request: Request, message_id: int) -> HTMLResponse:
+@app.get(path="/users/{user_id}")
+def get_user(request: Request, user_id: int) -> HTMLResponse:
     try:
-        return templates.TemplateResponse("message.html", {"request": request, "mes": messages_db[message_id-1]})
+        return templates.TemplateResponse("users.html", {"request": request, "user": users[user_id-1]})
     except IndexError:
-        raise HTTPException(status_code=404, detail="Message not found")
+        raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.post("/", status_code=status.HTTP_201_CREATED)
-def create_message(request: Request, message: str = Form()) -> HTMLResponse:
-    if messages_db:
-        message_id = max(messages_db, key=lambda x: x.id).id+1
-    else:
-        message_id = 0
-    messages_db.append(Message(id=message_id, text=message))
-    return templates.TemplateResponse("unit_form.html", {"request": request, 'messages': messages_db})
+@app.post("/user/{username}/{age}")
+def create_users(username: str, age: int) -> User:
+    # indexing_id()
+    ur = User(id=len(users)+1, username=username, age=age)
+    users.append(ur)
+    return ur
 
-
-@app.put("/message/{message_id}")
-def update_message(message_id: int, message: str = Body()) -> str:
+@app.put("/user/{user_id}/{username}/{age}")
+def update_user(user_id: int, username: str, age: int) -> User:
     try:
-        edit_message = messages_db[message_id]
-        edit_message.text = message
-        return f"Message updated!"
+        ur = find_to_id(user_id)
+        ur.username = username
+        ur.age = age
+        return ur
     except IndexError:
-        raise HTTPException(status_code=404, detail="Message not found")
+        raise HTTPException(status_code=404, detail=f"User with id # {user_id} was not found")
 
-
-@app.delete("/message/{message_id}")
-def delete_message(message_id: int) -> str:
+@app.delete("/user/{user_id}")
+def delete_user(user_id: int) -> str:
     try:
-        messages_db.pop(message_id)
-        return f"Message ID={message_id} deleted!"
-    except IndexError:
-        raise HTTPException(status_code=404, detail="Message not found")
+        users.remove(find_to_id(user_id))
+        # indexing_id()
+        return f"User ID={user_id} deleted!"
+    except ValueError:
+        raise HTTPException(status_code=404, detail="User was not found")
 
 
-@app.delete("/")
-def kill_message_all() -> str:
-    messages_db.clear()
-    return "All messages deleted!"
+
+
+
+
+
+
+
+
+
 
 
