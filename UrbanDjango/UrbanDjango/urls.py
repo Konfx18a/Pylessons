@@ -38,10 +38,18 @@ from django.urls import path
 # Домашнее задание по теме "DTL. Теги, наследование."
 # --------------------------------------------------------------------------------
 
-from task4.views import main_views, shop_views, basket_views
+# from task4.views import main_views, shop_views, basket_views
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('platform/', main_views),
+#     path('shop/', shop_views),
+#     path('basket/', basket_views)
+# ]
+
+from task5.views import sign_up_by_html,sign_up_by_django
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('platform/', main_views),
-    path('shop/', shop_views),
-    path('basket/', basket_views)
+    path('', sign_up_by_html),
+    path('django_sing_up/', sign_up_by_django)
 ]
