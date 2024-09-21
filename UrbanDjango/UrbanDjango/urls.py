@@ -16,26 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Домашнее задание по теме "Urls и Views. Функциональное и классовое представление."
+# ----------------------------------------------------------------------------------
 # from task2.views import func_views, my_views
-# from task3.views import main_views, shop_views, basket_views
-# from task4.views import main_views, shop_views, basket_views
-
-from task5.views import sign_up_by_html,sign_up_by_django
-
-# первое задание
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
 #     path('page2/', my_views.as_view()),
 #     path('', func_views),
 # ]
 
+# Домашнее задание по теме "Базовые HTML тэги в шаблонах".
+# ----------------------------------------------------------------------------------
+from task3.views import main_views, shop_views, basket_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('page2/', my_views.as_view()),
-    # path('platform/', main_views),
-    # path('shop/', shop_views),
-    # path('basket/', basket_views),
-
-    path('', sign_up_by_html),
-    path('django_sing_up/', sign_up_by_django)
+    path('platform/', main_views),
+    path('shop/', shop_views),
+    path('basket/', basket_views)
 ]
