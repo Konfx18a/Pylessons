@@ -17,9 +17,9 @@ class House:
         return self.number_of_floor
 
     def __str__(self):
-        return 'Название: ' + self.name + ' количество этажей: ', self.number_of_floor
+        return f'Название: {self.name}  количество этажей: , {self.number_of_floor}'
 
 new_house = House('ЖК Нью-Васюки', randint(1, 20))
 new_house.go_to(randint(-2, 20))
-print(new_house.__len__())
-print(new_house.__str__())
+print(len(new_house))
+print(new_house)
