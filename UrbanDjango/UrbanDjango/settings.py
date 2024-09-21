@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'task2',
-    # 'task3',
-    'task4.apps.Task4Config',
-    'task5.apps.Task5Config',
+    # Домашнее задание по теме "Urls и Views. Функциональное и классовое представление."
+    # --------------------------------------------------------------------------------
+    # 'task2.apps.Task2Config',
+
+    # Домашнее задание по теме "Базовые HTML тэги в шаблонах".
+    # --------------------------------------------------------------------------------
+    'task3.apps.Task3Config',
 ]
 
 MIDDLEWARE = [
