@@ -2,8 +2,9 @@ def need_sbls(adress):
     need_symbols = '.com', '.ru', '.net'
     ns = False
     for i in need_symbols:
-        if adress.rfind(i) + 1:
+        if adress.endswith(i):
             ns = True
+            break
     return ns and adress.find('@') + 1
 def send_mail(message, recipient, sender='university.help@gmail.com'):
     if not need_sbls(recipient) or not need_sbls(sender) :
