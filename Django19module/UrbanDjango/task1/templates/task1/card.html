@@ -1,0 +1,13 @@
+{% extends 'task4/menu.html' %}
+
+{% block pagename %}
+<h1>{{busket_name}}</h1>
+{% endblock %}
+{% block menu %}
+{{ block.super }}
+{% endblock %}
+{% block content %}
+<h1>{{no_products}}</h1>
+<p></p>
+<button>{{button_back}}</button>
+{% endblock %}
