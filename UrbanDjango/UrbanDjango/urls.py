@@ -27,7 +27,18 @@ from django.urls import path
 
 # Домашнее задание по теме "Базовые HTML тэги в шаблонах".
 # ----------------------------------------------------------------------------------
-from task3.views import main_views, shop_views, basket_views
+# from task3.views import main_views, shop_views, basket_views
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('platform/', main_views),
+#     path('shop/', shop_views),
+#     path('basket/', basket_views)
+# ]
+
+# Домашнее задание по теме "DTL. Теги, наследование."
+# --------------------------------------------------------------------------------
+
+from task4.views import main_views, shop_views, basket_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('platform/', main_views),
