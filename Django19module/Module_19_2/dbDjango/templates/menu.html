@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Django project {% endblock %} </title>
+</head>
+<body>
+{% block pagename %} <h1>{{main}}</h1> {% endblock %}
+<p></p>
+{% block menu %}
+<ul>
+<li><h2><a href="/platform">Главная страница</a> </h2></li>
+    <li><h2><a href="/shop">Магазин</a></h2></li>
+    <li><h2><a href="/basket">Корзина</a></h2></li>
+</ul>
+{% endblock %}
+{% block content %} <h2>Сайт создан с помощью FW Django</h2> {% endblock %}
+</body>
+</html>
