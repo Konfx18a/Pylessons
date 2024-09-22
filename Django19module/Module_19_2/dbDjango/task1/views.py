@@ -49,9 +49,9 @@ from templates.texts import strings as st
 
 # Create your views here.
 
-def main_views(request):
-    context = st.main_page
-    return render(request, 'platform.html', context)
+# def main_views(request):
+    # context = st.main_page
+    # return render(request, 'platform.html', context)
 
 
 def shop_views(request):
