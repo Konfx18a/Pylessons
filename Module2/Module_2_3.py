@@ -6,6 +6,7 @@ while i < len(my_list):
         i += 1
         continue
     elif my_list[i] == 0:
+        i+=1
         continue
     else:
         break
