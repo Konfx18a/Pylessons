@@ -6,7 +6,7 @@ neprost = []
 for i in numbers:
     is_prost = True
     if i == 1:
-        prost += [1]
+        neprost += [1]
         continue
     for j in range(2, i):
         if not i % j:
