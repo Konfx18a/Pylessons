@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # НЕТ такой библиотеки в .venv/lib/python3.10/site-packages/django/core
-    # 'django.core.pagers',
+    'django.core.paginator',  # добавляем пагинатор
     'panagapp'
 ]
 
