@@ -28,8 +28,8 @@ rnd_gen = np.random.default_rng()
 numpy_gauss = rnd_gen.normal(m, sigma, 100)
 
 #Для данного примера не показательно, набросаю еще ряд полезных функций numpy
-mas = np.arange(0,64,1,dtype=int)
-mas = np.reshape(mas, (2,4,8))
+mas = np.arange(0, 64, 1, dtype=int)
+mas = np.reshape(mas, (2, 4, 8))
 print(mas)
 # создание глубокая копия
 mas1 = mas.copy()
@@ -41,16 +41,16 @@ print(mas1.transpose())
 
 # Библиотека построения графиков, большая и мощная
 # ООП используется в полном объеме, каждый элемент это объект с набором атрибутов и методов
-# subplot создает , что-то типо ячеек таблицы и потом мы работаем с каждой ячейкой(об' Axis)
+# subplot создает, что-то типо ячеек таблицы и потом мы работаем с каждой ячейкой(об' Axis)
 fig, (ax1, ax2) = plt.subplots(1, 2)
 # plot прорисовка Axis(линейная интерполяция)
 ax1.plot(mas_x, f_gauss)
 ax1.set_title("Линейная интерполяция")
 ax1.set_xlabel("Ось X")
 ax1.set_ylabel("Ось Y")
-ax2.set_title("Гистограмма ")
-# проорисовка в виде гистограммы
-ax2.hist(mas_x, numpy_gauss, color='b')
+ax2.set_title("Рассеяние без матрицы ковариации")
+# прорисовка рассеяния двух векторов с нормальным распределением,
+plt.scatter(f_gauss, numpy_gauss, marker='o', s=1)
 # Вывод отрисовок на экран
 plt.show()
 
@@ -58,9 +58,9 @@ plt.show()
 # или именованных одномерных структур Series. Миеет массу функций для работы с данными
 m1 = np.array([randint(0,10) for _ in range(16)])
 m2 = np.array([randint(10,20) for _ in range(16)])
-m12 = np.array([m1,m2]).transpose()
+m12 = np.array([m1, m2]).transpose()
 # Создаем DataFrame из двух массивов
-df = pd.DataFrame(m12 , columns=['mas1', 'mas2'])
+df = pd.DataFrame(m12, columns=['mas1', 'mas2'])
 # # Записываем в файл csv
 df.to_csv('test.csv')
 df1 = pd.read_csv('test.csv')
